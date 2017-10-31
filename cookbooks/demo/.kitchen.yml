@@ -1,0 +1,32 @@
+---
+driver:
+  name: vagrant
+  network:
+    - ['private_network', {ip: '192.168.34.34'}]
+  synced_folders:
+    - ['/Users/allan/WebApps/sf-demo', '/app', 'mount_options: ["uid=48", "gid=48"]']
+
+provisioner:
+  name: chef_zero
+  # You may wish to disable always updating cookbooks in CI or other testing environments.
+  # For example:
+  #   always_update_cookbooks: <%= !ENV['CI'] %>
+  always_update_cookbooks: true
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: centos-7
+
+suites:
+  - name: default
+    run_list:
+      - recipe[demo::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
+      postgresql:
+        password:
+          postgres: iloverandompasswordsbutthiswilldo

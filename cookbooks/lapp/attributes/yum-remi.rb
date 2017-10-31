@@ -1,0 +1,1 @@
+default['yum']['remi-php56']['enabled'] = true
