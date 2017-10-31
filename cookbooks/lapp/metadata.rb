@@ -18,3 +18,13 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/lapp'
+
+depends 'apache2', '~> 5.0.1'
+depends 'postgresql', '~> 6.1.1'
+depends 'yum-remi', '~> 0.1.0'
+depends 'php', '~> 4.5.0'
+depends 'git', '~> 8.0.0'
+depends 'yum-epel', '~> 2.1.2'
+depends 'nodejs', '~> 4.0.0'
+depends 'composer', '~> 2.6.1'
+depends 'phpunit', '~> 1.1.0'

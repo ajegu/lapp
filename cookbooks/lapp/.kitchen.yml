@@ -1,6 +1,10 @@
 ---
 driver:
   name: vagrant
+  network:
+    - ['private_network', {ip: '192.168.34.34'}]
+  synced_folders:
+    - ['/Users/allan/WebApps/sf-demo', '/app']
 
 provisioner:
   name: chef_zero
@@ -13,7 +17,6 @@ verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-16.04
   - name: centos-7
 
 suites:
@@ -24,3 +27,6 @@ suites:
       inspec_tests:
         - test/smoke/default
     attributes:
+      postgresql:
+        password:
+          postgres: iloverandompasswordsbutthiswilldo
